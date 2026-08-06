@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan de estudios interactivo para la Licenciatura en Ciencias de la Computación (Plan 2022). Realiza un seguimiento de tus materias, notas y correlatividades.">
+  <title>Plan Académico LCC - Interactivo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-mode">
+  <div class="app-container">
+    
+    <!-- HEADER & STATS BAR -->
+    <header class="app-header">
+      <div class="header-main">
+        <div class="title-section">
+          <div class="logo-wrapper">
+            <i data-lucide="graduation-cap" class="logo-icon"></i>
+          </div>
+          <div>
+            <h1>Plan Académico LCC</h1>
+            <p class="subtitle">Licenciatura en Ciencias de la Computación &bull; Plan 2022</p>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="theme-toggle" class="btn btn-icon" title="Cambiar tema">
+            <i data-lucide="sun" class="icon-sun"></i>
+            <i data-lucide="moon" class="icon-moon"></i>
+          </button>
+          <button id="btn-reset" class="btn btn-danger" title="Borrar todo el progreso">
+            <i data-lucide="rotate-ccw"></i>
+            <span>Reiniciar Carrera</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Statistics Dashboard -->
+      <div class="stats-dashboard">
+        <div class="stat-card progress-card">
+          <div class="stat-info">
+            <span class="stat-label">Progreso Carrera</span>
+            <span id="txt-progress-overall" class="stat-value">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div id="bar-progress-overall" class="progress-bar" style="width: 0%"></div>
+          </div>
+          <span id="txt-progress-overall-count" class="stat-subtext">0 de 39 materias aprobadas</span>
+        </div>
+        
+        <div class="stat-card progress-card intermediate">
+          <div class="stat-info">
+            <span class="stat-label">Título Intermedio (Tecnicatura)*</span>
+            <span id="txt-progress-intermediate" class="stat-value">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div id="bar-progress-intermediate" class="progress-bar" style="width: 0%"></div>
+          </div>
+          <span id="txt-progress-intermediate-count" class="stat-subtext">0 de 16 materias aprobadas</span>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper aprobadas">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-label">Aprobadas</span>
+            <span id="txt-count-approved" class="stat-value">0</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper regularizadas">
+            <i data-lucide="bookmark"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-label">Regularizadas</span>
+            <span id="txt-count-regularized" class="stat-value">0</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper promedio">
+            <i data-lucide="award"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-label">Promedio Académico</span>
+            <span id="txt-average-grade" class="stat-value">-</span>
+            <span id="txt-average-with-failures" class="stat-subtext">Sin aplazos: -</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SEARCH & FILTERS CONTROLS -->
+    <section class="controls-section">
+      <div class="search-box">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="input-search" placeholder="Buscar materia por nombre o número...">
+      </div>
+      
+      <div class="filter-group">
+        <label for="select-filter">Filtrar:</label>
+        <div class="select-wrapper">
+          <select id="select-filter">
+            <option value="all">Todas las materias</option>
+            <option value="cursables">Cursables (Naranja Suave)</option>
+            <option value="regularizadas">Regularizadas (Naranja Fuerte)</option>
+            <option value="aprobadas">Aprobadas (Verde)</option>
+            <option value="bloqueadas">Bloqueadas (Semitransparentes)</option>
+            <option value="intermediate">Título Intermedio (*)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="checkbox-control">
+        <label class="switch-label">
+          <input type="checkbox" id="chk-show-lines" checked>
+          <span class="switch-slider"></span>
+        </label>
+        <span class="checkbox-text">Mostrar líneas de correlativas</span>
+      </div>
+
+      <div class="checkbox-control">
+        <label class="switch-label">
+          <input type="checkbox" id="chk-show-all-lines">
+          <span class="switch-slider"></span>
+        </label>
+        <span class="checkbox-text">Mostrar todas las líneas siempre</span>
+      </div>
+    </section>
+
+    <!-- MAIN ACADEMIC MAP -->
+    <main class="academic-map-wrapper">
+      <div class="legend-bar">
+        <div class="legend-item"><span class="legend-color locked"></span><span class="legend-text">Bloqueada (Prerrequisitos pendientes)</span></div>
+        <div class="legend-item"><span class="legend-color available"></span><span class="legend-text">Cursable (Naranja suave)</span></div>
+        <div class="legend-item"><span class="legend-color regular"></span><span class="legend-text">Regularizada (Naranja fuerte)</span></div>
+        <div class="legend-item"><span class="legend-color approved"></span><span class="legend-text">Aprobada (Verde)</span></div>
+        <div class="legend-item"><span class="legend-badge-star">*</span><span class="legend-text">Título Intermedio</span></div>
+      </div>
+      
+      <div class="map-container-outer">
+        <div class="map-container" id="map-container">
+          
+          <!-- SVG connections layer -->
+          <svg class="connections-layer" id="connections-layer"></svg>
+          
+          <!-- Column 1: Primero -->
+          <div class="year-column" data-year="1">
+            <div class="year-header">
+              <span class="year-num">1º</span>
+              <span class="year-name">Primer Año</span>
+            </div>
+            <div class="subjects-list" id="column-year-1"></div>
+          </div>
+          
+          <!-- Column 2: Segundo -->
+          <div class="year-column" data-year="2">
+            <div class="year-header">
+              <span class="year-num">2º</span>
+              <span class="year-name">Segundo Año</span>
+            </div>
+            <div class="subjects-list" id="column-year-2"></div>
+          </div>
+          
+          <!-- Column 3: Tercero -->
+          <div class="year-column" data-year="3">
+            <div class="year-header">
+              <span class="year-num">3º</span>
+              <span class="year-name">Tercer Año</span>
+            </div>
+            <!-- Práctica Socio-Educativa (Intermediate Requirement) -->
+            <div class="special-requirement-box">
+              <div class="pse-label">Requisito Obligatorio:</div>
+              <label class="pse-checkbox-wrapper">
+                <input type="checkbox" id="chk-pse">
+                <span class="pse-checkbox-custom"></span>
+                <span class="pse-checkbox-text">Práctica Socio-Educativa</span>
+              </label>
+            </div>
+            <div class="subjects-list" id="column-year-3"></div>
+          </div>
+          
+          <!-- Column 4: Cuarto -->
+          <div class="year-column" data-year="4">
+            <div class="year-header">
+              <span class="year-num">4º</span>
+              <span class="year-name">Cuarto Año</span>
+            </div>
+            <div class="subjects-list" id="column-year-4"></div>
+          </div>
+          
+          <!-- Column 5: Quinto -->
+          <div class="year-column" data-year="5">
+            <div class="year-header">
+              <span class="year-num">5º</span>
+              <span class="year-name">Quinto Año</span>
+            </div>
+            <div class="subjects-list" id="column-year-5"></div>
+          </div>
+          
+        </div>
+      </div>
+    </main>
+    
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p>Desarrollado para estudiantes de LCC. Guarda automáticamente tu progreso en este navegador.</p>
+    </footer>
+  </div>
+
+  <!-- MODAL: GRADE INPUT -->
+  <div id="modal-grade" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-subject-title">Cargar Nota</h3>
+        <button id="btn-close-modal" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="subject-info-summary">
+          <span class="subject-number-badge" id="modal-subject-number">1</span>
+          <span class="subject-name-text" id="modal-subject-name">Algoritmos y Resolución de Problemas</span>
+        </div>
+        
+        <form id="form-grade" onsubmit="return false;">
+          <div class="form-group">
+            <label for="input-grade">Nota final o estado de cursada:</label>
+            <input type="number" id="input-grade" min="1" max="10" placeholder="Ej: 8 (o dejar vacío para regularizar)" step="any" autofocus autocomplete="off">
+            <p class="input-help-text">Ingresa una nota del 1 al 10. Las notas de 4 o más aprueban la materia.</p>
+          </div>
+          
+          <div class="modal-info-alert">
+            <div class="alert-row">
+              <span class="indicator approved"></span>
+              <span><strong>Nota &ge; 4:</strong> Materia Aprobada (Verde)</span>
+            </div>
+            <div class="alert-row">
+              <span class="indicator regular"></span>
+              <span><strong>Nota &lt; 4 o Vacío:</strong> Materia Regularizada (Naranja Fuerte)</span>
+            </div>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" id="btn-modal-cancel" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" id="btn-modal-submit" class="btn btn-primary">Guardar Estado</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: RESET CAREER CONFIRMATION -->
+  <div id="modal-confirm-reset" class="modal-overlay">
+    <div class="modal-card modal-confirm">
+      <div class="modal-header">
+        <h3>¿Reiniciar Carrera?</h3>
+        <button id="btn-close-confirm" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Esta acción borrará todo el progreso guardado, incluyendo notas, materias aprobadas y regularizadas de forma permanente.</p>
+        <p class="warning-text">¿Estás seguro de que quieres continuar?</p>
+        <div class="modal-actions">
+          <button id="btn-confirm-cancel" class="btn btn-secondary">Cancelar</button>
+          <button id="btn-confirm-accept" class="btn btn-danger">Sí, borrar todo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
