@@ -25,8 +25,8 @@
             <i data-lucide="graduation-cap" class="logo-icon"></i>
           </div>
           <div>
-            <h1>Plan Académico LCC</h1>
-            <p class="subtitle">Licenciatura en Ciencias de la Computación &bull; Plan 2022</p>
+            <h1 id="app-title">Plan Académico LCC</h1>
+            <p id="app-subtitle" class="subtitle">Licenciatura en Ciencias de la Computación &bull; Plan 2023</p>
           </div>
         </div>
         
@@ -101,6 +101,26 @@
 
     <!-- SEARCH & FILTERS CONTROLS -->
     <section class="controls-section">
+      <div class="filter-group">
+        <label for="select-plan">Plan:</label>
+        <div class="select-wrapper">
+          <select id="select-plan">
+            <option value="lcc-2023">LCC (Plan 2023)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label for="select-period">Período:</label>
+        <div class="select-wrapper">
+          <select id="select-period">
+            <option value="anual">Anual (Todas)</option>
+            <option value="1">1er Cuatrimestre</option>
+            <option value="2">2do Cuatrimestre</option>
+          </select>
+        </div>
+      </div>
+
       <div class="search-box">
         <i data-lucide="search" class="search-icon"></i>
         <input type="text" id="input-search" placeholder="Buscar materia por nombre o número...">

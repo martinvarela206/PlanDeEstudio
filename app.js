@@ -1,325 +1,60 @@
-// SUBJECTS DATASET
-const SUBJECTS = [
-  // Year 1 (Primero)
-  {
-    id: 1,
-    name: "Algoritmos y Resolución de Problemas",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [], rendida: [] },
-    correlativasRendir: []
-  },
-  {
-    id: 2,
-    name: "Matemática Básica",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [], rendida: [] },
-    correlativasRendir: []
-  },
-  {
-    id: 3,
-    name: "Estructura y Funcionamiento de Computadoras",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [], rendida: [] },
-    correlativasRendir: []
-  },
-  {
-    id: 4,
-    name: "Programación Procedural",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [1, 3], rendida: [] },
-    correlativasRendir: [1, 3]
-  },
-  {
-    id: 5,
-    name: "Álgebra Lineal",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [2], rendida: [] },
-    correlativasRendir: [2]
-  },
-  {
-    id: 6,
-    name: "Sistemas Operativos",
-    year: 1,
-    starred: true,
-    correlativasCursar: { cursada: [1, 3], rendida: [] },
-    correlativasRendir: [1, 3]
-  },
-  // Year 2 (Segundo)
-  {
-    id: 7,
-    name: "Programación Orientada a Objetos",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [4], rendida: [1] },
-    correlativasRendir: [4]
-  },
-  {
-    id: 8,
-    name: "Teoría de la Computación",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [5], rendida: [2] },
-    correlativasRendir: [5]
-  },
-  {
-    id: 9,
-    name: "Análisis Matemático I",
-    year: 2,
-    starred: false,
-    correlativasCursar: { cursada: [5], rendida: [2] },
-    correlativasRendir: [5]
-  },
-  {
-    id: 10,
-    name: "Ingeniería de Sistemas",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [4], rendida: [1] },
-    correlativasRendir: [4]
-  },
-  {
-    id: 11,
-    name: "Estructuras de Datos y Algoritmos",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [7, 8], rendida: [4] },
-    correlativasRendir: [7, 8]
-  },
-  {
-    id: 12,
-    name: "Programación Web",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [7], rendida: [4] },
-    correlativasRendir: [7]
-  },
-  {
-    id: 13,
-    name: "Análisis Matemático II",
-    year: 2,
-    starred: false,
-    correlativasCursar: { cursada: [9], rendida: [5] },
-    correlativasRendir: [9]
-  },
-  {
-    id: 14,
-    name: "Ingles I",
-    year: 2,
-    starred: true,
-    correlativasCursar: { cursada: [4], rendida: [3] },
-    correlativasRendir: [4]
-  },
-  // Year 3 (Tercero)
-  {
-    id: 15,
-    name: "Paradigmas de Lenguajes",
-    year: 3,
-    starred: true,
-    correlativasCursar: { cursada: [8, 11, 12], rendida: [7] },
-    correlativasRendir: [8, 11, 12]
-  },
-  {
-    id: 16,
-    name: "Base de Datos I",
-    year: 3,
-    starred: true,
-    correlativasCursar: { cursada: [8, 11], rendida: [5] },
-    correlativasRendir: [8, 11]
-  },
-  {
-    id: 17,
-    name: "Ingles II",
-    year: 3,
-    starred: true,
-    correlativasCursar: { cursada: [14], rendida: [] },
-    correlativasRendir: [14]
-  },
-  {
-    id: 18,
-    name: "Ingeniería de Software I",
-    year: 3,
-    starred: false,
-    correlativasCursar: { cursada: [7], rendida: [10] },
-    correlativasRendir: [7]
-  },
-  {
-    id: 19,
-    name: "Redes",
-    year: 3,
-    starred: true,
-    correlativasCursar: { cursada: [8, 14], rendida: [6] },
-    correlativasRendir: [8, 14]
-  },
-  {
-    id: 20,
-    name: "Aspectos Profesionales y Sociales",
-    year: 3,
-    starred: false,
-    correlativasCursar: { cursada: [16], rendida: [10] },
-    correlativasRendir: [16]
-  },
-  {
-    id: 21,
-    name: "Legislación Profesional",
-    year: 3,
-    starred: false,
-    correlativasCursar: { cursada: [16], rendida: [10] },
-    correlativasRendir: [16]
-  },
-  {
-    id: 22,
-    name: "Probabilidad y Estadística",
-    year: 3,
-    starred: false,
-    correlativasCursar: { cursada: [13], rendida: [9] },
-    correlativasRendir: [13]
-  },
-  {
-    id: 23,
-    name: "Algoritmos Numéricos",
-    year: 3,
-    starred: false,
-    correlativasCursar: { cursada: [13], rendida: [9] },
-    correlativasRendir: [13]
-  },
-  // Year 4 (Cuarto)
-  {
-    id: 24,
-    name: "Auditoría",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [18], rendida: [10] },
-    correlativasRendir: [18]
-  },
-  {
-    id: 25,
-    name: "Ingeniería de Software II",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [18], rendida: [7, 10, 12] },
-    correlativasRendir: [18]
-  },
-  {
-    id: 26,
-    name: "Computabilidad y Complejidad",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [23], rendida: [8, 11] },
-    correlativasRendir: [23]
-  },
-  {
-    id: 27,
-    name: "Teoría de la Información",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [22, 23], rendida: [11] },
-    correlativasRendir: [22, 23]
-  },
-  {
-    id: 28,
-    name: "Sistemas Distribuidos y Paralelismos",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [19], rendida: [11, 13] },
-    correlativasRendir: [19]
-  },
-  {
-    id: 29,
-    name: "Base de Datos II",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [23], rendida: [16] },
-    correlativasRendir: [23]
-  },
-  {
-    id: 30,
-    name: "Compiladores",
-    year: 4,
-    starred: false,
-    correlativasCursar: { cursada: [26], rendida: [15] },
-    correlativasRendir: [26]
-  },
-  // Year 5 (Quinto)
-  {
-    id: 31,
-    name: "Inteligencia Artificial",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [29], rendida: [15, 23] },
-    correlativasRendir: [29]
-  },
-  {
-    id: 32,
-    name: "Ingeniería de Software III",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [25], rendida: [16, 17, 18] },
-    correlativasRendir: [25]
-  },
-  {
-    id: 33,
-    name: "Computación Gráfica y Visualización",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [22, 27], rendida: [12, 15] },
-    correlativasRendir: [22, 27]
-  },
-  {
-    id: 34,
-    name: "Electiva I",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [], rendida: [] },
-    correlativasRendir: []
-  },
-  {
-    id: 35,
-    name: "Epistemología y Metodología de la Investigación Científica",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [24], rendida: [20, 21, 22] },
-    correlativasRendir: [24]
-  },
-  {
-    id: 36,
-    name: "Lógica y Optimización Aplicada",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [26], rendida: [15, 27] },
-    correlativasRendir: [26]
-  },
-  {
-    id: 37,
-    name: "Proyectos de Innovación Tecnológica",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [29], rendida: [20, 21] },
-    correlativasRendir: [29]
-  },
-  {
-    id: 38,
-    name: "Electiva II",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [], rendida: [] },
-    correlativasRendir: []
-  },
-  {
-    id: 39,
-    name: "Trabajo Fin de Carrera",
-    year: 5,
-    starred: false,
-    correlativasCursar: { cursada: [], rendida: ["INTERMEDIATE"] },
-    correlativasRendir: Array.from({ length: 38 }, (_, i) => i + 1)
-  }
-];
+// DEFAULT / FALLBACK PLAN DATA (LCC 2023)
+const DEFAULT_LCC_2023_PLAN = {
+  "id": "lcc-2023",
+  "title": "Plan Académico LCC",
+  "degree": "Licenciatura en Ciencias de la Computación",
+  "plan": "2023",
+  "subtitle": "Licenciatura en Ciencias de la Computación • Plan 2023",
+  "intermediateTitle": "Título Intermedio (Tecnicatura)",
+  "totalYears": 5,
+  "hasIntermediate": true,
+  "subjects": [
+    { "id": 1, "name": "Algoritmos y Resolución de Problemas", "year": 1, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [], "rendida": [] }, "correlativasRendir": [] },
+    { "id": 2, "name": "Matemática Básica", "year": 1, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [], "rendida": [] }, "correlativasRendir": [] },
+    { "id": 3, "name": "Estructura y Funcionamiento de Computadoras", "year": 1, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [], "rendida": [] }, "correlativasRendir": [] },
+    { "id": 4, "name": "Programación Procedural", "year": 1, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [1, 3], "rendida": [] }, "correlativasRendir": [1, 3] },
+    { "id": 5, "name": "Álgebra Lineal", "year": 1, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [2], "rendida": [] }, "correlativasRendir": [2] },
+    { "id": 6, "name": "Sistemas Operativos", "year": 1, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [1, 3], "rendida": [] }, "correlativasRendir": [1, 3] },
+    { "id": 7, "name": "Programación Orientada a Objetos", "year": 2, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [4], "rendida": [1] }, "correlativasRendir": [4] },
+    { "id": 8, "name": "Teoría de la Computación", "year": 2, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [5], "rendida": [2] }, "correlativasRendir": [5] },
+    { "id": 9, "name": "Análisis Matemático I", "year": 2, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [5], "rendida": [2] }, "correlativasRendir": [5] },
+    { "id": 10, "name": "Ingeniería de Sistemas", "year": 2, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [4], "rendida": [1] }, "correlativasRendir": [4] },
+    { "id": 11, "name": "Estructuras de Datos y Algoritmos", "year": 2, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [7, 8], "rendida": [4] }, "correlativasRendir": [7, 8] },
+    { "id": 12, "name": "Programación Web", "year": 2, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [7], "rendida": [4] }, "correlativasRendir": [7] },
+    { "id": 13, "name": "Análisis Matemático II", "year": 2, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [9], "rendida": [5] }, "correlativasRendir": [9] },
+    { "id": 14, "name": "Ingles I", "year": 2, "cuatrimestre": 2, "starred": true, "correlativasCursar": { "cursada": [4], "rendida": [3] }, "correlativasRendir": [4] },
+    { "id": 15, "name": "Paradigmas de Lenguajes", "year": 3, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [8, 11, 12], "rendida": [7] }, "correlativasRendir": [8, 11, 12] },
+    { "id": 16, "name": "Base de Datos I", "year": 3, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [8, 11], "rendida": [5] }, "correlativasRendir": [8, 11] },
+    { "id": 17, "name": "Ingles II", "year": 3, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [14], "rendida": [] }, "correlativasRendir": [14] },
+    { "id": 18, "name": "Ingeniería de Software I", "year": 3, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [7], "rendida": [10] }, "correlativasRendir": [7] },
+    { "id": 19, "name": "Redes", "year": 3, "cuatrimestre": 1, "starred": true, "correlativasCursar": { "cursada": [8, 14], "rendida": [6] }, "correlativasRendir": [8, 14] },
+    { "id": 20, "name": "Aspectos Profesionales y Sociales", "year": 3, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [16], "rendida": [10] }, "correlativasRendir": [16] },
+    { "id": 21, "name": "Legislación Profesional", "year": 3, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [16], "rendida": [10] }, "correlativasRendir": [16] },
+    { "id": 22, "name": "Probabilidad y Estadística", "year": 3, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [13], "rendida": [9] }, "correlativasRendir": [13] },
+    { "id": 23, "name": "Algoritmos Numéricos", "year": 3, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [13], "rendida": [9] }, "correlativasRendir": [13] },
+    { "id": 24, "name": "Auditoría", "year": 4, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [18], "rendida": [10] }, "correlativasRendir": [18] },
+    { "id": 25, "name": "Ingeniería de Software II", "year": 4, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [18], "rendida": [7, 10, 12] }, "correlativasRendir": [18] },
+    { "id": 26, "name": "Computabilidad y Complejidad", "year": 4, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [23], "rendida": [8, 11] }, "correlativasRendir": [23] },
+    { "id": 27, "name": "Teoría de la Información", "year": 4, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [22, 23], "rendida": [11] }, "correlativasRendir": [22, 23] },
+    { "id": 28, "name": "Sistemas Distribuidos y Paralelismos", "year": 4, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [19], "rendida": [11, 13] }, "correlativasRendir": [19] },
+    { "id": 29, "name": "Base de Datos II", "year": 4, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [23], "rendida": [16] }, "correlativasRendir": [23] },
+    { "id": 30, "name": "Compiladores", "year": 4, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [26], "rendida": [15] }, "correlativasRendir": [26] },
+    { "id": 31, "name": "Inteligencia Artificial", "year": 5, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [29], "rendida": [15, 23] }, "correlativasRendir": [29] },
+    { "id": 32, "name": "Ingeniería de Software III", "year": 5, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [25], "rendida": [16, 17, 18] }, "correlativasRendir": [25] },
+    { "id": 33, "name": "Computación Gráfica y Visualización", "year": 5, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [22, 27], "rendida": [12, 15] }, "correlativasRendir": [22, 27] },
+    { "id": 34, "name": "Electiva I", "year": 5, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [], "rendida": [] }, "correlativasRendir": [] },
+    { "id": 35, "name": "Epistemología y Metodología de la Investigación Científica", "year": 5, "cuatrimestre": 1, "starred": false, "correlativasCursar": { "cursada": [24], "rendida": [20, 21, 22] }, "correlativasRendir": [24] },
+    { "id": 36, "name": "Lógica y Optimización Aplicada", "year": 5, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [26], "rendida": [15, 27] }, "correlativasRendir": [26] },
+    { "id": 37, "name": "Proyectos de Innovación Tecnológica", "year": 5, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [29], "rendida": [20, 21] }, "correlativasRendir": [29] },
+    { "id": 38, "name": "Electiva II", "year": 5, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [], "rendida": [] }, "correlativasRendir": [] },
+    { "id": 39, "name": "Trabajo Fin de Carrera", "year": 5, "cuatrimestre": 2, "starred": false, "correlativasCursar": { "cursada": [], "rendida": ["INTERMEDIATE"] }, "correlativasRendir": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38] }
+  ]
+};
 
 // STATE MANAGEMENT
+let currentPlan = DEFAULT_LCC_2023_PLAN;
+let SUBJECTS = DEFAULT_LCC_2023_PLAN.subjects;
+let currentPlanId = 'lcc-2023';
 let userProgress = {}; // Key: subjectId -> { status: 'regularized' | 'approved', grade: number | null }
 let pseCompleted = false; // Práctica Socio-Educativa check
 let currentTheme = 'dark';
@@ -328,6 +63,7 @@ let activeModalSubjectId = null;
 // Search & Filter state
 let searchTerm = "";
 let currentFilter = "all";
+let currentPeriod = "anual"; // "anual" | "1" | "2"
 let showLines = true;
 let showAllLinesAlways = false;
 
@@ -336,11 +72,15 @@ const mapContainer = document.getElementById('map-container');
 const connectionsLayer = document.getElementById('connections-layer');
 const inputSearch = document.getElementById('input-search');
 const selectFilter = document.getElementById('select-filter');
+const selectPlan = document.getElementById('select-plan');
+const selectPeriod = document.getElementById('select-period');
 const chkShowLines = document.getElementById('chk-show-lines');
 const chkShowAllLines = document.getElementById('chk-show-all-lines');
 const themeToggle = document.getElementById('theme-toggle');
 const btnReset = document.getElementById('btn-reset');
 const chkPse = document.getElementById('chk-pse');
+const appTitle = document.getElementById('app-title');
+const appSubtitle = document.getElementById('app-subtitle');
 
 // Modals
 const modalGrade = document.getElementById('modal-grade');
@@ -358,39 +98,86 @@ const btnConfirmCancel = document.getElementById('btn-confirm-cancel');
 const btnConfirmAccept = document.getElementById('btn-confirm-accept');
 
 // INIT APPLICATION
-function init() {
-  loadFromLocalStorage();
+async function init() {
+  loadGeneralPreferences();
+  await loadAvailablePlans();
+  await switchPlan(currentPlanId, false);
   setupEventListeners();
-  renderSubjectContainers();
-  updateWorkflowState();
   
-  // Initialize Lucide icons inside dynamically created elements
   if (window.lucide) {
     window.lucide.createIcons();
   }
   
-  // Initial draw of connection lines
   setTimeout(drawConnectionPaths, 300);
 }
 
-// LOCAL STORAGE PERSISTENCE
-function loadFromLocalStorage() {
-  const savedProgress = localStorage.getItem('lcc_career_progress');
-  if (savedProgress) {
-    userProgress = JSON.parse(savedProgress);
-  } else {
-    userProgress = {};
+// PLAN SWITCHING & FETCHING
+async function loadAvailablePlans() {
+  try {
+    const res = await fetch('resources/plans/plans.json');
+    if (res.ok) {
+      const plansList = await res.json();
+      if (Array.isArray(plansList) && plansList.length > 0) {
+        selectPlan.innerHTML = plansList.map(p => 
+          `<option value="${p.id}">${p.name} (${p.plan})</option>`
+        ).join('');
+      }
+    }
+  } catch (e) {
+    console.warn("Could not fetch plans.json, using default options", e);
   }
 
-  const savedPse = localStorage.getItem('lcc_pse_completed');
-  pseCompleted = savedPse === 'true';
-  chkPse.checked = pseCompleted;
+  const savedPlanId = localStorage.getItem('lcc_selected_plan');
+  if (savedPlanId) {
+    currentPlanId = savedPlanId;
+    selectPlan.value = currentPlanId;
+  }
+}
 
+async function switchPlan(planId, notify = true) {
+  currentPlanId = planId;
+  let planData = null;
+
+  try {
+    const res = await fetch(`resources/plans/${planId}.json`);
+    if (res.ok) {
+      planData = await res.json();
+    }
+  } catch (e) {
+    console.warn(`Could not load resources/plans/${planId}.json dynamically, falling back to default.`, e);
+  }
+
+  if (!planData) {
+    if (planId === 'lcc-2023') {
+      planData = DEFAULT_LCC_2023_PLAN;
+    } else {
+      showToast("No se pudo cargar el plan seleccionado.", "error");
+      return;
+    }
+  }
+
+  currentPlan = planData;
+  SUBJECTS = planData.subjects || [];
+
+  // Update Header Title & Subtitle
+  if (appTitle && planData.title) appTitle.textContent = planData.title;
+  if (appSubtitle && planData.subtitle) appSubtitle.textContent = planData.subtitle;
+
+  loadPlanProgress(planId);
+  renderSubjectContainers();
+  updateWorkflowState();
+  
+  if (notify) {
+    showToast(`Cargado plan: ${planData.degree} (${planData.plan})`, "info");
+  }
+}
+
+// LOCAL STORAGE PERSISTENCE
+function loadGeneralPreferences() {
   const savedTheme = localStorage.getItem('lcc_theme') || 'dark';
   currentTheme = savedTheme;
   document.body.className = currentTheme === 'dark' ? 'dark-mode' : 'light-mode';
 
-  // Load preferences
   const savedShowLines = localStorage.getItem('lcc_pref_show_lines');
   if (savedShowLines !== null) {
     showLines = savedShowLines === 'true';
@@ -402,11 +189,43 @@ function loadFromLocalStorage() {
     showAllLinesAlways = savedShowAllLines === 'true';
     chkShowAllLines.checked = showAllLinesAlways;
   }
+
+  const savedPeriod = localStorage.getItem('lcc_pref_period');
+  if (savedPeriod !== null) {
+    currentPeriod = savedPeriod;
+    selectPeriod.value = currentPeriod;
+  }
+}
+
+function loadPlanProgress(planId) {
+  const planKey = `plan_progress_${planId}`;
+  let savedProgress = localStorage.getItem(planKey);
+
+  // Migration from legacy key if LCC 2023
+  if (!savedProgress && planId === 'lcc-2023') {
+    const legacy = localStorage.getItem('lcc_career_progress');
+    if (legacy) {
+      savedProgress = legacy;
+      localStorage.setItem(planKey, legacy);
+    }
+  }
+
+  if (savedProgress) {
+    userProgress = JSON.parse(savedProgress);
+  } else {
+    userProgress = {};
+  }
+
+  const savedPse = localStorage.getItem(`pse_completed_${planId}`) || localStorage.getItem('lcc_pse_completed');
+  pseCompleted = savedPse === 'true';
+  if (chkPse) chkPse.checked = pseCompleted;
 }
 
 function saveToLocalStorage() {
-  localStorage.setItem('lcc_career_progress', JSON.stringify(userProgress));
-  localStorage.setItem('lcc_pse_completed', pseCompleted.toString());
+  localStorage.setItem(`plan_progress_${currentPlanId}`, JSON.stringify(userProgress));
+  localStorage.setItem(`pse_completed_${currentPlanId}`, pseCompleted.toString());
+  localStorage.setItem('lcc_selected_plan', currentPlanId);
+  localStorage.setItem('lcc_pref_period', currentPeriod);
   localStorage.setItem('lcc_theme', currentTheme);
   localStorage.setItem('lcc_pref_show_lines', showLines.toString());
   localStorage.setItem('lcc_pref_show_all_lines', showAllLinesAlways.toString());
@@ -414,8 +233,8 @@ function saveToLocalStorage() {
 
 // DYNAMIC EVALUATION LOGIC
 function isIntermediateApproved() {
-  // Starred subjects must be approved
   const starredSubjects = SUBJECTS.filter(s => s.starred);
+  if (starredSubjects.length === 0) return true;
   const allStarredApproved = starredSubjects.every(s => userProgress[s.id] && userProgress[s.id].status === 'approved');
   return allStarredApproved && pseCompleted;
 }
@@ -423,34 +242,27 @@ function isIntermediateApproved() {
 function calculateSubjectStatuses() {
   const statuses = {};
 
-  // Initialize status lookup
   SUBJECTS.forEach(subject => {
     if (userProgress[subject.id]) {
-      statuses[subject.id] = userProgress[subject.id].status; // 'regularized' or 'approved'
+      statuses[subject.id] = userProgress[subject.id].status;
     } else {
       statuses[subject.id] = null;
     }
   });
 
-  // Evaluate prerequisites iteratively until no changes occur
   let changed = true;
   let iterations = 0;
   
-  while (changed && iterations < 39) {
+  while (changed && iterations < SUBJECTS.length) {
     changed = false;
     iterations++;
 
     SUBJECTS.forEach(subject => {
-      // If subject already has a locked user state (regularized/approved), it retains it.
-      if (userProgress[subject.id]) {
-        return;
-      }
+      if (userProgress[subject.id]) return;
 
-      // Check "Correlativas para Cursar" requirements
       const reqCursar = subject.correlativasCursar;
       let cursarMet = true;
 
-      // Cursada requirements (must be regularized or approved)
       for (const reqId of reqCursar.cursada) {
         const reqState = statuses[reqId];
         if (reqState !== 'regularized' && reqState !== 'approved') {
@@ -459,7 +271,6 @@ function calculateSubjectStatuses() {
         }
       }
 
-      // Rendida requirements (must be approved / verde)
       if (cursarMet) {
         for (const reqId of reqCursar.rendida) {
           if (reqId === "INTERMEDIATE") {
@@ -488,9 +299,8 @@ function calculateSubjectStatuses() {
   return statuses;
 }
 
-// INTERACTIVE TOAST NOTIFICATIONS (Premium Detail)
+// TOAST NOTIFICATIONS
 function showToast(message, type = 'info') {
-  // Remove existing toasts first
   const existingToasts = document.querySelectorAll('.toast-notification');
   existingToasts.forEach(t => t.remove());
 
@@ -506,10 +316,7 @@ function showToast(message, type = 'info') {
     window.lucide.createIcons();
   }
 
-  // Animate toast
   setTimeout(() => toast.classList.add('active'), 10);
-
-  // Auto-remove
   setTimeout(() => {
     toast.classList.remove('active');
     setTimeout(() => toast.remove(), 300);
@@ -518,32 +325,37 @@ function showToast(message, type = 'info') {
 
 // STATS & DASHBOARD RE-CALCULATION
 function updateDashboardStats() {
+  const totalSubjects = SUBJECTS.length;
+  if (totalSubjects === 0) return;
+
   const approvedCount = Object.values(userProgress).filter(p => p.status === 'approved').length;
   const regularCount = Object.values(userProgress).filter(p => p.status === 'regularized').length;
   
   // Progress overall
-  const overallPercent = Math.round((approvedCount / 39) * 100);
+  const overallPercent = Math.round((approvedCount / totalSubjects) * 100);
   document.getElementById('txt-progress-overall').textContent = `${overallPercent}%`;
   document.getElementById('bar-progress-overall').style.width = `${overallPercent}%`;
-  document.getElementById('txt-progress-overall-count').textContent = `${approvedCount} de 39 materias aprobadas`;
+  document.getElementById('txt-progress-overall-count').textContent = `${approvedCount} de ${totalSubjects} materias aprobadas`;
 
   // Intermediate title progress
   const starredSubjects = SUBJECTS.filter(s => s.starred);
-  const approvedStarredCount = starredSubjects.filter(s => userProgress[s.id] && userProgress[s.id].status === 'approved').length;
-  
-  // Total requirements for intermediate is 16 starred subjects + 1 PSE = 17 points
-  const intermediateScore = approvedStarredCount + (pseCompleted ? 1 : 0);
-  const intermediatePercent = Math.round((intermediateScore / 17) * 100);
-  document.getElementById('txt-progress-intermediate').textContent = `${intermediatePercent}%`;
-  document.getElementById('bar-progress-intermediate').style.width = `${intermediatePercent}%`;
-  
-  let starredText = `${approvedStarredCount} de 16 materias`;
-  if (pseCompleted) {
-    starredText += " + PSE completada";
+  if (starredSubjects.length > 0) {
+    const approvedStarredCount = starredSubjects.filter(s => userProgress[s.id] && userProgress[s.id].status === 'approved').length;
+    const totalIntermediateReqs = starredSubjects.length + 1;
+    const intermediateScore = approvedStarredCount + (pseCompleted ? 1 : 0);
+    const intermediatePercent = Math.round((intermediateScore / totalIntermediateReqs) * 100);
+    
+    document.getElementById('txt-progress-intermediate').textContent = `${intermediatePercent}%`;
+    document.getElementById('bar-progress-intermediate').style.width = `${intermediatePercent}%`;
+    
+    let starredText = `${approvedStarredCount} de ${starredSubjects.length} materias`;
+    starredText += pseCompleted ? " + PSE completada" : " (PSE pendiente)";
+    document.getElementById('txt-progress-intermediate-count').textContent = starredText;
   } else {
-    starredText += " (PSE pendiente)";
+    document.getElementById('txt-progress-intermediate').textContent = `-`;
+    document.getElementById('bar-progress-intermediate').style.width = `0%`;
+    document.getElementById('txt-progress-intermediate-count').textContent = `No aplica a este plan`;
   }
-  document.getElementById('txt-progress-intermediate-count').textContent = starredText;
 
   // Numerical Counts
   document.getElementById('txt-count-approved').textContent = approvedCount;
@@ -579,9 +391,9 @@ function updateDashboardStats() {
 
 // SUBJECTS CARD UI RENDERING
 function renderSubjectContainers() {
-  // Clear columns
   for (let y = 1; y <= 5; y++) {
-    document.getElementById(`column-year-${y}`).innerHTML = "";
+    const col = document.getElementById(`column-year-${y}`);
+    if (col) col.innerHTML = "";
   }
 
   SUBJECTS.forEach(subject => {
@@ -593,14 +405,15 @@ function renderSubjectContainers() {
     card.id = `subject-card-${subject.id}`;
     card.dataset.id = subject.id;
     
-    // Star indicator for intermediate degree
     const starHtml = subject.starred ? `<span class="star-badge" title="Materia del Título Intermedio (Tecnicatura)">*</span>` : '';
-    
+    const cuatrHtml = subject.cuatrimestre ? `<span class="cuatrimestre-badge">${subject.cuatrimestre}º C</span>` : '';
+
     card.innerHTML = `
       <button class="card-clear-btn" title="Restaurar estado">&times;</button>
       <div class="card-header">
         <span class="subject-num">${subject.id}</span>
         <div class="badge-row">
+          ${cuatrHtml}
           ${starHtml}
           <span class="status-text-badge"></span>
         </div>
@@ -612,18 +425,14 @@ function renderSubjectContainers() {
       </div>
     `;
 
-    // Click handler for card
     card.addEventListener('click', (e) => {
-      // If clicking clear button (X), don't trigger the modal opening
       if (e.target.classList.contains('card-clear-btn')) {
         handleClearSubject(subject.id);
         return;
       }
-
       handleSubjectClick(subject.id);
     });
 
-    // Hover interactions for connection highlights
     card.addEventListener('mouseenter', () => handleSubjectHoverEnter(subject.id));
     card.addEventListener('mouseleave', () => handleSubjectHoverLeave());
 
@@ -638,16 +447,12 @@ function updateWorkflowState() {
     const card = document.getElementById(`subject-card-${subject.id}`);
     if (!card) return;
 
-    // Reset state classes
     card.classList.remove('state-locked', 'state-available', 'state-regular', 'state-approved');
-    
     const status = calculatedStatuses[subject.id];
     
-    // Apply styling state class
     if (status === 'approved') {
       card.classList.add('state-approved');
       card.querySelector('.status-text-badge').textContent = "Aprobada";
-      
       const userState = userProgress[subject.id];
       if (userState && userState.grade !== null) {
         card.querySelector('.txt-grade-label').textContent = "Nota:";
@@ -660,7 +465,6 @@ function updateWorkflowState() {
     else if (status === 'regularized') {
       card.classList.add('state-regular');
       card.querySelector('.status-text-badge').textContent = "Regular";
-      
       const userState = userProgress[subject.id];
       if (userState && userState.grade !== null) {
         card.querySelector('.txt-grade-label').textContent = "Nota Cursada:";
@@ -683,18 +487,15 @@ function updateWorkflowState() {
       card.querySelector('.txt-grade-val').textContent = "";
     }
 
-    // Apply Filter & Search Dimming
     applyFiltersAndSearch(card, subject, status);
   });
 
   updateDashboardStats();
   saveToLocalStorage();
-  
-  // Re-draw connection lines in case positions shifted slightly
   drawConnectionPaths();
 }
 
-// SEARCH & FILTER APPLICATION
+// SEARCH, PERIOD & FILTER APPLICATION
 function applyFiltersAndSearch(card, subject, calculatedStatus) {
   let matchesSearch = true;
   let matchesFilter = true;
@@ -727,10 +528,34 @@ function applyFiltersAndSearch(card, subject, calculatedStatus) {
   } else {
     card.classList.add('filter-dimmed');
   }
+
+  // Period filter (Anual, 1er Cuatrimestre, 2do Cuatrimestre)
+  if (currentPeriod !== "anual") {
+    const periodNum = parseInt(currentPeriod);
+    if (subject.cuatrimestre && subject.cuatrimestre !== periodNum && subject.cuatrimestre !== 0) {
+      card.classList.add('period-dimmed');
+    } else {
+      card.classList.remove('period-dimmed');
+    }
+  } else {
+    card.classList.remove('period-dimmed');
+  }
 }
 
 // EVENTS ROUTING AND BINDING
 function setupEventListeners() {
+  // Plan Selector
+  selectPlan.addEventListener('change', (e) => {
+    switchPlan(e.target.value);
+  });
+
+  // Period Selector
+  selectPeriod.addEventListener('change', (e) => {
+    currentPeriod = e.target.value;
+    updateWorkflowState();
+    saveToLocalStorage();
+  });
+
   // Search Input
   inputSearch.addEventListener('input', (e) => {
     searchTerm = e.target.value;
@@ -761,7 +586,6 @@ function setupEventListeners() {
     currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.className = currentTheme === 'dark' ? 'dark-mode' : 'light-mode';
     saveToLocalStorage();
-    // Redraw SVG paths to match color scheme immediately
     drawConnectionPaths();
   });
 
@@ -771,10 +595,12 @@ function setupEventListeners() {
   });
 
   // PSE Checkbox
-  chkPse.addEventListener('change', (e) => {
-    pseCompleted = e.target.checked;
-    updateWorkflowState();
-  });
+  if (chkPse) {
+    chkPse.addEventListener('change', (e) => {
+      pseCompleted = e.target.checked;
+      updateWorkflowState();
+    });
+  }
 
   // Form Submit (Grade modal)
   formGrade.addEventListener('submit', handleModalSubmit);
@@ -796,13 +622,13 @@ function setupEventListeners() {
   btnConfirmAccept.addEventListener('click', () => {
     userProgress = {};
     pseCompleted = false;
-    chkPse.checked = false;
+    if (chkPse) chkPse.checked = false;
     modalConfirmReset.classList.remove('active');
     updateWorkflowState();
     showToast("Se ha reiniciado el progreso de la carrera correctamente.", "info");
   });
 
-  // Redraw SVG lines on window resize
+  // Window resize listener for SVG
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -818,15 +644,13 @@ function handleSubjectClick(subjectId) {
   const subject = SUBJECTS.find(s => s.id === subjectId);
   const status = calculateSubjectStatuses()[subjectId];
 
-  // Locked subjects cannot be clicked
   if (status === 'locked') {
-    // Collect missing Cursar requirements to explain to the user
     const missing = [];
     subject.correlativasCursar.cursada.forEach(reqId => {
       const state = userProgress[reqId] ? userProgress[reqId].status : null;
       if (state !== 'regularized' && state !== 'approved') {
         const reqSubject = SUBJECTS.find(s => s.id === reqId);
-        missing.push(`[${reqId}] ${reqSubject.name} (Cursada)`);
+        missing.push(`[${reqId}] ${reqSubject ? reqSubject.name : reqId} (Cursada)`);
       }
     });
 
@@ -839,7 +663,7 @@ function handleSubjectClick(subjectId) {
         const state = userProgress[reqId] ? userProgress[reqId].status : null;
         if (state !== 'approved') {
           const reqSubject = SUBJECTS.find(s => s.id === reqId);
-          missing.push(`[${reqId}] ${reqSubject.name} (Aprobada)`);
+          missing.push(`[${reqId}] ${reqSubject ? reqSubject.name : reqId} (Aprobada)`);
         }
       }
     });
@@ -848,14 +672,13 @@ function handleSubjectClick(subjectId) {
     return;
   }
 
-  // If regularized, check if "Correlativas para Rendir" are met
   if (status === 'regularized') {
     const missingRendir = [];
     subject.correlativasRendir.forEach(reqId => {
       const state = userProgress[reqId] ? userProgress[reqId].status : null;
       if (state !== 'approved') {
         const reqSubject = SUBJECTS.find(s => s.id === reqId);
-        missingRendir.push(`[${reqId}] ${reqSubject.name}`);
+        missingRendir.push(`[${reqId}] ${reqSubject ? reqSubject.name : reqId}`);
       }
     });
 
@@ -865,13 +688,11 @@ function handleSubjectClick(subjectId) {
     }
   }
 
-  // Open the grade input modal
   activeModalSubjectId = subjectId;
   modalSubjectTitle.textContent = status === 'regularized' ? "Rendir Final" : "Cargar Nota de Cursada";
   modalSubjectNumber.textContent = subject.id;
   modalSubjectName.textContent = subject.name;
   
-  // Fill in existing grade if present
   const existingGrade = userProgress[subjectId] ? userProgress[subjectId].grade : null;
   inputGrade.value = existingGrade !== null ? existingGrade : "";
   
@@ -888,7 +709,6 @@ function handleClearSubject(subjectId) {
   }
 }
 
-// MODAL CONTROLLERS
 function closeModal() {
   modalGrade.classList.remove('active');
   activeModalSubjectId = null;
@@ -903,9 +723,7 @@ function handleModalSubmit(e) {
   const subjectId = activeModalSubjectId;
   const subject = SUBJECTS.find(s => s.id === subjectId);
 
-  // If grade is empty/invalid or < 4, it counts as regularized (Naranja Fuerte)
   if (val === "" || isNaN(val)) {
-    // Empty grade means regularized (naranja fuerte)
     userProgress[subjectId] = {
       status: 'regularized',
       grade: null
@@ -919,14 +737,12 @@ function handleModalSubmit(e) {
     }
 
     if (grade >= 4) {
-      // Grade >= 4 means approved (verde)
       userProgress[subjectId] = {
         status: 'approved',
         grade: grade
       };
       showToast(`¡Materia aprobada con ${grade}!: ${subject.name}`, "success");
     } else {
-      // Grade < 4 also means regularized in this workflow
       userProgress[subjectId] = {
         status: 'regularized',
         grade: grade
@@ -943,19 +759,16 @@ function handleModalSubmit(e) {
 function handleSubjectHoverEnter(hoveredId) {
   if (!showLines) return;
 
-  const calculatedStatuses = calculateSubjectStatuses();
   const hoveredSubject = SUBJECTS.find(s => s.id === hoveredId);
-  
-  // Find all recursive prerequisites and dependencies to highlight
+  if (!hoveredSubject) return;
+
   const prerequisites = new Set();
   const dependants = new Set();
 
-  // Helper for incoming dependencies (Prerequisites)
   function collectPrereqs(id) {
     const sub = SUBJECTS.find(s => s.id === id);
     if (!sub) return;
 
-    // Union of cursar (cursada & rendida) and rendir
     const reqs = [
       ...sub.correlativasCursar.cursada,
       ...sub.correlativasCursar.rendida.filter(rid => rid !== "INTERMEDIATE"),
@@ -970,7 +783,6 @@ function handleSubjectHoverEnter(hoveredId) {
     });
   }
 
-  // Helper for outgoing dependencies (Dependants)
   function collectDependants(id) {
     SUBJECTS.forEach(sub => {
       const isDep = 
@@ -988,7 +800,6 @@ function handleSubjectHoverEnter(hoveredId) {
   collectPrereqs(hoveredId);
   collectDependants(hoveredId);
 
-  // Dim cards that are not related
   SUBJECTS.forEach(subject => {
     const card = document.getElementById(`subject-card-${subject.id}`);
     if (!card) return;
@@ -1004,14 +815,12 @@ function handleSubjectHoverEnter(hoveredId) {
     }
   });
 
-  // Re-draw connection lines but with active styling for matching paths
   highlightConnectionPaths(hoveredId, prerequisites, dependants);
 }
 
 function handleSubjectHoverLeave() {
   if (!showLines) return;
 
-  // Clear card highlights
   SUBJECTS.forEach(subject => {
     const card = document.getElementById(`subject-card-${subject.id}`);
     if (card) {
@@ -1019,13 +828,11 @@ function handleSubjectHoverLeave() {
     }
   });
 
-  // Reapply standard filter and search dimming
   updateWorkflowState();
 }
 
 // SVG LINE DRAWING ENGINE
 function drawConnectionPaths() {
-  // Clear existing paths in the SVG
   connectionsLayer.innerHTML = `
     <defs>
       <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -1036,11 +843,9 @@ function drawConnectionPaths() {
 
   if (!showLines) return;
 
-  // Set SVG canvas width/height to match container scroll size
   connectionsLayer.setAttribute('width', mapContainer.scrollWidth);
   connectionsLayer.setAttribute('height', mapContainer.scrollHeight);
 
-  // Gather pairs to connect: B -> A (B is prerequisite, A is target subject)
   const connections = [];
 
   SUBJECTS.forEach(subject => {
@@ -1056,14 +861,12 @@ function drawConnectionPaths() {
     });
   });
 
-  // Draw each connection line
   const containerRect = mapContainer.getBoundingClientRect();
 
   connections.forEach(conn => {
     const elFrom = document.getElementById(`subject-card-${conn.from}`);
     const elTo = document.getElementById(`subject-card-${conn.to}`);
     
-    // Skip if elements aren't rendered or filtered out
     if (!elFrom || !elTo || elFrom.classList.contains('filter-dimmed') || elTo.classList.contains('filter-dimmed')) {
       return;
     }
@@ -1071,14 +874,12 @@ function drawConnectionPaths() {
     const rectFrom = elFrom.getBoundingClientRect();
     const rectTo = elTo.getBoundingClientRect();
 
-    // Coordinates relative to the parent mapContainer
     const x1 = rectFrom.right - containerRect.left;
     const y1 = rectFrom.top + (rectFrom.height / 2) - containerRect.top;
     
     const x2 = rectTo.left - containerRect.left;
     const y2 = rectTo.top + (rectTo.height / 2) - containerRect.top;
 
-    // Draw standard smooth bezier curve
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const dx = (x2 - x1) * 0.4;
     
@@ -1088,9 +889,7 @@ function drawConnectionPaths() {
     path.dataset.from = conn.from;
     path.dataset.to = conn.to;
 
-    // Apply color/opacity based on global preference
     if (!showAllLinesAlways) {
-      // If we don't show all lines, we hide paths initially by making them transparent/thin
       path.style.opacity = '0.04';
     } else {
       path.style.opacity = '0.22';
@@ -1108,20 +907,16 @@ function highlightConnectionPaths(hoveredId, prerequisites, dependants) {
     const toId = parseInt(path.dataset.to);
 
     if (toId === hoveredId && prerequisites.has(fromId)) {
-      // Path leading INTO hovered subject (its prerequisites)
       path.classList.add('connection-path', 'path-dependency');
       path.style.opacity = '0.85';
     } else if (fromId === hoveredId && dependants.has(toId)) {
-      // Path leading OUT OF hovered subject (its dependants)
       path.classList.add('connection-path', 'path-dependant');
       path.style.opacity = '0.85';
     } else {
-      // Unrelated line
       path.style.opacity = '0.01';
     }
   });
 }
 
-// Window load trigger
 window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('load', drawConnectionPaths);

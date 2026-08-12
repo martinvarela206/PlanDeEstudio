@@ -1011,6 +1011,41 @@ body {
   pointer-events: none !important;
 }
 
+/* Period Filter Dimming: de-emphasize subjects outside selected cuatrimestre */
+.subject-card.period-dimmed {
+  opacity: 0.22 !important;
+  filter: grayscale(70%);
+  transition: opacity var(--transition-normal), filter var(--transition-normal);
+}
+
+.subject-card.period-dimmed:hover {
+  opacity: 0.8 !important;
+  filter: grayscale(0%);
+}
+
+.cuatrimestre-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--primary-color);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  line-height: 1;
+}
+
+.subject-card.state-regular .cuatrimestre-badge {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.subject-card.state-approved .cuatrimestre-badge {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--state-approved-text);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
 /* SVG PATH LINES */
 .connection-path {
   fill: none;
